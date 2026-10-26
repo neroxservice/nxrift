@@ -1,0 +1,60 @@
+{
+  "name": "nxrift",
+  "productName": "nxRift",
+  "version": "0.1.0",
+  "description": "nxRift – der Browser von nxService & Streams",
+  "author": "NeroX | nxService & Streams",
+  "main": "main.js",
+  "scripts": {
+    "start": "node node_modules/electron/cli.js .",
+    "dist": "node node_modules/electron-builder/cli.js --win nsis",
+    "release": "node node_modules/electron-builder/cli.js --win nsis --publish always"
+  },
+  "devDependencies": {
+    "electron": "^39.8.10",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.nxservice.rift",
+    "productName": "nxRift",
+    "icon": "build/icon.ico",
+    "files": [
+      "main.js",
+      "preload.js",
+      "tabpreload.js",
+      "import.js",
+      "ui/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "nxRift",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "installerSidebar": "build/sidebar.bmp",
+      "uninstallerSidebar": "build/sidebar.bmp"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "neroxservice",
+        "repo": "nxrift"
+      }
+    ]
+  },
+  "dependencies": {
+    "@ghostery/adblocker-electron": "2.20.1",
+    "sql.js": "^1.13.0",
+    "electron-updater": "^6.8.11",
+    "electron-chrome-extensions": "^4.10.0",
+    "electron-chrome-web-store": "^0.13.0"
+  }
+}

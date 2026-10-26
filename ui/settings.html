@@ -1,0 +1,263 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Einstellungen</title>
+<style>
+:root{--p:#ff3ea5;--c:#2de1e6;--bg:#0a0a12;--bg2:#12121f;--bd:#1e1e33;--tx:#e8e8f5;--mu:#8a8aa8}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:14px 'Segoe UI',sans-serif;display:flex;height:100vh;overflow:hidden}
+nav{width:230px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--bd);padding:22px 12px;display:flex;flex-direction:column;gap:4px}
+nav h1{font-size:15px;letter-spacing:3px;padding:0 14px 16px;background:linear-gradient(90deg,var(--p),var(--c));-webkit-background-clip:text;color:transparent}
+nav button{text-align:left;padding:10px 14px;border-radius:10px;background:none;border:0;color:var(--mu);font:inherit;cursor:pointer}
+nav button:hover{color:var(--tx)}nav button.on{background:#1a1a2e;color:var(--c);box-shadow:inset 3px 0 var(--p)}
+main{flex:1;overflow:auto;padding:30px 40px}
+section{display:none;max-width:920px}section.on{display:block}
+h2{font-size:22px;margin-bottom:4px}.sub{color:var(--mu);margin-bottom:20px;font-size:13px}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--bd)}.row:last-child{border:0}
+.row small{display:block;color:var(--mu);margin-top:2px}
+.bar{display:flex;gap:10px;margin-bottom:12px;align-items:center}
+input[type=search],input[type=text]{flex:1;min-width:0;height:38px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:0 14px;color:var(--tx);font:inherit;outline:0}
+input:focus{border-color:var(--c)}
+button,select{background:#1a1a2e;color:var(--tx);border:1px solid #25253f;border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
+button:hover:not(:disabled){border-color:var(--p)}button:disabled{opacity:.35;cursor:default}
+.sw{appearance:none;width:42px;height:24px;border-radius:12px;background:#25253f;position:relative;cursor:pointer;transition:.2s;flex-shrink:0}
+.sw::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+.sw:checked{background:linear-gradient(90deg,var(--p),var(--c))}.sw:checked::after{left:21px}
+.it{display:flex;align-items:center;gap:12px;padding:9px 16px;border-bottom:1px solid var(--bd)}.it:hover{background:#161628}.it:last-child{border:0}
+.ico{width:30px;height:30px;border-radius:8px;background:#1a1a2e;display:grid;place-items:center;font-weight:700;color:var(--c);overflow:hidden;flex-shrink:0}
+.ico img{width:20px;height:20px}
+.mt{flex:1;min-width:0}.mt b,.mt small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mt small{color:var(--mu)}
+.pwv{font-family:Consolas,monospace;color:var(--c);max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.on-pin{color:var(--p);border-color:var(--p)}.x:hover{background:var(--p)!important}
+.cnt{color:var(--mu);font-size:12px;margin:0 0 8px}.empty{padding:30px;text-align:center;color:var(--mu)}
+.pg{display:flex;justify-content:center;gap:14px;align-items:center;margin-top:14px;color:var(--mu)}
+#out{margin-top:12px;color:var(--c);white-space:pre-wrap}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--p),var(--c));border-radius:10px;border:2px solid transparent;background-clip:padding-box}::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ff6ab9,#6ff2f6);background-clip:padding-box;border:2px solid transparent}
+.grp{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd);cursor:pointer}.grp:hover{background:#161628}.grp:last-child{border:0}
+.tag{color:var(--mu);font-size:12px;white-space:nowrap}.chev{color:var(--mu);font-size:20px}
+.bk{display:flex;align-items:center;gap:12px;margin-bottom:16px}.bk h3{flex:1;font-size:18px;overflow:hidden;text-overflow:ellipsis}
+.acc{padding:16px 18px;margin-bottom:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;align-items:end}
+.fld label{display:block;color:var(--p);font-size:12px;font-weight:600;margin-bottom:5px}
+.box{display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:4px 5px 4px 12px;min-height:36px}.box span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.box button{padding:3px 9px}
+input[type=range]{accent-color:var(--p)}
+input[type=password]{height:38px;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:0 14px;color:var(--tx);font:inherit;outline:0;min-width:210px}
+input[type=color]{width:34px;height:26px;border:0;background:none;vertical-align:middle;cursor:pointer}
+.pb{height:5px;background:#25253f;border-radius:3px;margin-top:6px;overflow:hidden}.pb i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--c))}
+.pre{width:34px;height:34px;border-radius:50%;padding:0;border:2px solid var(--bd)}.pre:hover{border-color:#fff}
+.ico img+span{display:none}
+#bgsel{position:relative;display:inline-block;cursor:crosshair;border:1px solid var(--bd);border-radius:8px;overflow:hidden;line-height:0}
+#bgsel img{max-width:230px;max-height:230px;display:block}
+#bgdot{position:absolute;width:18px;height:18px;border:2px solid var(--p);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 0 1px #000,0 0 10px var(--p)}
+#bgprev{width:288px;height:162px;border:1px solid var(--bd);border-radius:8px;overflow:hidden;position:relative;background:#0a0a12}
+#bgin{position:absolute;inset:0}
+#bgbox small{display:block;color:var(--mu);margin-bottom:6px;font-size:12px}
+</style></head><body>
+<nav><h1>NXRIFT</h1>
+ <button class="on" data-s="s-gen">Allgemein</button><button data-s="s-fav">Favoriten</button>
+ <button data-s="s-pw">Passwörter</button><button data-s="s-hist">Verlauf</button><button data-s="s-dl">Downloads</button><button data-s="s-ext">Erweiterungen</button><button data-s="s-imp">Importieren</button></nav>
+<main>
+<section id="s-gen" class="on"><h2>Allgemein</h2><p class="sub">Verhalten und Darstellung</p>
+ <div class="card" style="padding:16px 18px;margin-bottom:16px"><b>Farbschema</b><div class="bar" style="margin:12px 0 0" id="presets"></div>
+  <div class="bar" style="margin:12px 0 0;gap:18px"><label>Akzent 1 <input type="color" id="cp"></label><label>Akzent 2 <input type="color" id="cc"></label></div>
+  <div class="bar" style="margin:14px 0 0;gap:12px;flex-wrap:wrap"><span>Startseiten-Hintergrund:</span><button id="bgpick">Bild wählen…</button><button id="bgclr">Entfernen</button><span id="bgn" style="color:var(--mu);font-size:12px"></span></div>
+  <div class="bar" style="margin:10px 0 0;gap:12px"><span>Abdunkeln</span><input type="range" id="bgdim" min="0" max="85" value="45" style="flex:1;max-width:260px"></div>
+  <div id="bgbox" style="display:none;margin-top:14px"><div style="display:flex;gap:18px;flex-wrap:wrap">
+   <div><small>Fokus wählen – klick aufs Gesicht oder die wichtige Stelle</small><div id="bgsel"><img id="bgimg"><i id="bgdot"></i></div></div>
+   <div><small>Vorschau Startseite</small><div id="bgprev"><div id="bgin"></div></div></div></div>
+   <div class="bar" style="margin:12px 0 0;gap:12px"><span>Darstellung</span><select id="bgfit"><option value="cover">Füllen</option><option value="contain">Einpassen (ganzes Bild)</option></select><span>Zoom</span><input type="range" id="bgzoom" min="100" max="300" value="100" style="max-width:200px"></div></div></div>
+ <div class="card" style="margin-bottom:16px"><div class="row"><div>nxRift <b id="ver"></b><small id="upm">Updates werden im installierten Build automatisch geladen</small></div><button id="upb">Nach Updates suchen</button></div></div>
+ <div class="card">
+  <div class="row"><div>Favoritenleiste anzeigen<small>Angeheftete Favoriten unter der Adressleiste</small></div><input type="checkbox" class="sw" id="fbar"></div>
+  <div class="row"><div>Ad-Blocker<small>Filterlisten im uBlock-Stil</small></div><input type="checkbox" class="sw" id="ab"></div>
+  <div class="row"><div>Standard-Suchmaschine<small>Für Adressleiste, Startseite und Rechtsklick-Suche</small></div><select id="se"><option value="google">Google</option><option value="duckduckgo">DuckDuckGo</option><option value="bing">Bing</option><option value="brave">Brave Search</option><option value="ecosia">Ecosia</option><option value="startpage">Startpage</option></select></div>
+  <div class="row"><div>Tabs beim Start wiederherstellen<small>Inklusive Tab-Gruppen</small></div><input type="checkbox" class="sw" id="rs"></div>
+  <div class="row"><div>Neon-Scrollbars<small>Auf Webseiten ohne eigene Scrollbar (gilt ab dem nächsten Seitenaufruf)</small></div><input type="checkbox" class="sw" id="scr"></div>
+  <div class="row"><div>Tab-Sleep<small>Inaktive Tabs nach 5 Minuten freigeben</small></div><input type="checkbox" class="sw" id="sl"></div>
+ </div></section>
+
+<section id="s-fav"><h2>Favoriten</h2><p class="sub">📌 heftet einen Favoriten an die Leiste und die Startseite</p>
+ <div class="bar"><input type="search" id="favq" placeholder="Favoriten durchsuchen…"><button id="favpin">Nur angeheftete</button></div>
+ <div class="bar"><input type="text" id="nt" placeholder="Titel (optional)" style="max-width:220px"><input type="text" id="nu" placeholder="https://…"><button id="na">Hinzufügen</button></div>
+ <p class="cnt" id="favn"></p><div class="card" id="favl"></div><div class="pg" id="favpg"></div></section>
+
+<section id="s-pw"><h2>Passwörter</h2><p class="sub">Verschlüsselt per Windows-DPAPI. Kopierte Passwörter werden nach 30 s aus der Zwischenablage gelöscht.</p>
+ <div class="card" id="vault" style="padding:14px 18px;margin-bottom:14px"></div>
+ <div class="card" style="padding:14px 18px;margin-bottom:14px"><b>Passwort-Generator</b>
+  <div class="bar" style="margin:10px 0 0"><input type="text" id="gout" readonly style="font-family:Consolas,monospace"><button id="ggen">Neu</button><button id="gcp">Kopieren</button></div>
+  <div class="bar" style="margin:10px 0 0;gap:16px"><span>Länge <b id="glv">20</b></span><input type="range" id="gl" min="8" max="64" value="20" style="flex:1"><label><input type="checkbox" id="gu" checked> A–Z</label><label><input type="checkbox" id="gn" checked> 0–9</label><label><input type="checkbox" id="gs" checked> !@#</label></div></div>
+ <div id="pwlist"><div class="bar"><input type="search" id="pwq" placeholder="Nach Website oder Benutzername suchen…"></div><p class="cnt" id="pwn"></p><div class="card" id="pwl"></div><div class="pg" id="pwpg"></div></div><div id="pwdet" style="display:none"></div></section>
+
+<section id="s-hist"><h2>Verlauf</h2><p class="sub">Besuchte Seiten (Strg+H)</p>
+ <div class="bar"><input type="search" id="histq" placeholder="Verlauf durchsuchen…"><button id="histclr">Alles löschen</button></div>
+ <p class="cnt" id="histn"></p><div class="card" id="histl"></div><div class="pg" id="histpg"></div></section>
+<section id="s-dl"><h2>Downloads</h2><p class="sub">Gespeichert im Windows-Downloads-Ordner (Strg+J)</p>
+ <div class="card" style="margin-bottom:14px"><div class="row"><div>Speicherort<small id="dldir">…</small></div><div><button id="dlpick">Ändern…</button> <button id="dlreset">Standard</button></div></div>
+  <div class="row"><div>Vor jedem Download fragen<small>Zeigt „Speichern unter“ mit Ordner- und Namenswahl</small></div><input type="checkbox" class="sw" id="dlask"></div></div>
+ <div class="bar"><button id="dlclr">Beendete entfernen</button></div><div class="card" id="dll"></div></section>
+<section id="s-ext"><h2>Erweiterungen</h2><p class="sub">Chrome-Erweiterungen aus dem Chrome Web Store. Ihre Symbole erscheinen rechts in der Adressleiste.</p>
+ <div class="bar" style="flex-wrap:wrap"><button id="exstore">Chrome Web Store öffnen</button><button id="exdir">Entpackte Erweiterung laden…</button><button id="exupd">Updates prüfen</button><span id="exmsg" style="color:var(--c);font-size:12px"></span></div>
+ <div class="card" id="exl"></div>
+ <p style="color:var(--mu);font-size:12px;margin-top:14px;line-height:1.6">Läuft meist: Darstellungs-Erweiterungen (Dark Mode), Tools mit Popup, Seiten-Skripte. Eingeschränkt: Passwort-Manager (kein Native Messaging) und Werbeblocker, die klassische Netzwerk-Filter-APIs brauchen. Nicht möglich: Chrome-Konto/Sync. Opera-Erweiterungen lassen sich nur als entpackter Ordner laden.</p></section>
+<section id="s-imp"><h2>Importieren</h2><p class="sub">Aus einem anderen Browser übernehmen – Quelle vorher komplett beenden</p>
+ <div class="card"><div class="row"><select id="br"></select><select id="pf"></select><button id="pick" title="Anderen Chromium-Browser über seinen Ordner wählen">Ordner wählen…</button></div>
+  <div class="row"><div style="display:flex;gap:18px;flex-wrap:wrap"><label><input type="checkbox" id="k1" checked> Favoriten</label><label><input type="checkbox" id="k2" checked> Passwörter</label><label><input type="checkbox" id="k3"> Tabs (grob)</label></div><button id="go">Importieren</button></div></div>
+ <div id="out"></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const I=(c,...a)=>nxs.inv(c,...a),host=u=>{try{return new URL(u).hostname.replace(/^www\./,'')}catch{return u}};
+const N=25;let FAV=[],PW=[];const st={fav:{q:'',p:1,pin:false},pw:{q:'',p:1},hist:{q:'',p:1}};
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,section').forEach(e=>e.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.s).classList.add('on');onSec(b.dataset.s)});
+function slice(k,l){const n=Math.max(1,Math.ceil(l.length/N));st[k].p=Math.min(st[k].p,n);
+  $('#'+k+'pg').innerHTML=n>1?`<button data-pg="${k}" data-d="-1" ${st[k].p<2?'disabled':''}>‹</button><span>Seite ${st[k].p} / ${n}</span><button data-pg="${k}" data-d="1" ${st[k].p>=n?'disabled':''}>›</button>`:'';
+  return l.slice((st[k].p-1)*N,st[k].p*N)}
+const IC={};
+const ico=u=>{const h=host(u);return `<div class="ico" data-h="${esc(h)}">${IC[h]?`<img src="${IC[h]}">`:''}<span>${esc((h[0]||'?').toUpperCase())}</span></div>`};
+async function fillIc(){const els=[...document.querySelectorAll('.ico[data-h]')],need=[...new Set(els.map(e=>e.dataset.h).filter(h=>!(h in IC)))];
+  if(need.length){const r=await I('icon:get',need);need.forEach(h=>{IC[h]=r[h]||null})}
+  els.forEach(e=>{const src=IC[e.dataset.h];if(src&&!e.querySelector('img')){const im=new Image();im.src=src;e.prepend(im)}})}
+const gkey=u=>{try{return new URL(u).host.replace(/^www\./,'')}catch{return u}};
+function groups(){const m=new Map();PW.forEach((x,i)=>{const k=gkey(x.url);if(!m.has(k))m.set(k,[]);m.get(k).push({...x,i})});return m}
+function rPW(){
+  if(st.pw.open)return rDet();
+  $('#pwlist').style.display='';$('#pwdet').style.display='none';
+  const f=st.pw.q.toLowerCase();
+  const l=[...groups()].filter(([k,a])=>(k+' '+a.map(x=>x.user).join(' ')).toLowerCase().includes(f)).sort((a,b)=>a[0].localeCompare(b[0]));
+  $('#pwn').textContent=l.length+' Websites · '+PW.length+' Passwörter';
+  $('#pwl').innerHTML=slice('pw',l).map(([k,a])=>`<div class="grp" data-k="${esc(k)}">${ico('https://'+k)}<div class="mt"><b>${esc(k)}</b></div><span class="tag">${a.length>1?a.length+' Konten':esc(a[0].user)}</span><span class="chev">›</span></div>`).join('')||'<p class="empty">Keine Treffer</p>'}
+function rDet(){
+  const a=groups().get(st.pw.open);if(!a){st.pw.open=null;return rPW()}
+  $('#pwlist').style.display='none';$('#pwdet').style.display='';
+  $('#pwdet').innerHTML=`<div class="bk"><button id="back">←</button><h3>${esc(st.pw.open)}</h3><button data-a="go">Website öffnen</button></div>`+a.map(x=>`<div class="card acc"><div class="fld"><label>Nutzername</label><div class="box"><span>${esc(x.user||'–')}</span><button data-a="u" data-i="${x.i}" title="Kopieren">⧉</button></div></div><div class="fld"><label>Passwort</label><div class="box"><span class="pwv">••••••••••</span><button data-a="s" data-i="${x.i}" title="Anzeigen">👁</button><button data-a="p" data-i="${x.i}" title="Kopieren">⧉</button></div></div><div><button class="x" data-a="d" data-i="${x.i}">Löschen</button></div></div>`).join('')}
+function rFav(){const f=st.fav.q.toLowerCase();
+  const l=FAV.map((x,i)=>({...x,i})).filter(x=>(!st.fav.pin||x.pin)&&((x.title||'')+' '+x.url).toLowerCase().includes(f));
+  $('#favn').textContent=l.length+' von '+FAV.length+' Favoriten';$('#favpin').classList.toggle('on-pin',st.fav.pin);
+  $('#favl').innerHTML=slice('fav',l).map(x=>`<div class="it">${ico(x.url)}<div class="mt"><b>${esc(x.title||host(x.url))}</b><small>${esc(x.url)}</small></div><button class="${x.pin?'on-pin':''}" data-a="pin" data-i="${x.i}" title="Anheften">📌</button><button data-a="o" data-i="${x.i}">Öffnen</button><button class="x" data-a="d" data-i="${x.i}">✕</button></div>`).join('')||'<p class="empty">Keine Treffer</p>'}
+const copy=(t,clear)=>{navigator.clipboard.writeText(t);if(clear)setTimeout(()=>navigator.clipboard.writeText(''),30000)};
+$('#pwl').onclick=e=>{const g=e.target.closest('.grp');if(g){st.pw.open=g.dataset.k;$('main').scrollTop=0;rPW()}};
+$('#pwdet').onclick=e=>pwh(e).catch(()=>{});
+async function pwh(e){const b=e.target.closest('button');if(!b)return;const a=b.dataset.a;
+  if(b.id==='back'){st.pw.open=null;return rPW()}
+  if(a==='go')return I('fav:open',groups().get(st.pw.open)[0].url);
+  const i=+b.dataset.i;
+  if(a==='u')copy(PW[i].user);
+  if(a==='p')copy(await pwget(i),true);
+  if(a==='s'){const v=b.closest('.box').querySelector('.pwv'),M='••••••••••';if(v.dataset.on){v.textContent=M;delete v.dataset.on}else{v.textContent=await pwget(i);v.dataset.on=1;setTimeout(()=>{v.textContent=M;delete v.dataset.on},10000)}}
+  if(a==='d'&&confirm('Passwort für '+st.pw.open+' ('+PW[i].user+') löschen?')){await I('pw:del',i);PW=await I('pw:list');rPW()}}
+let BR=[];
+async function loadBr(sel){BR=await I('imp:detect');
+  $('#br').innerHTML=BR.map(x=>`<option value="${x.id}" ${x.profiles.length?'':'disabled'}>${esc(x.name)}${x.profiles.length?'':' (nicht gefunden)'}</option>`).join('');
+  const f=BR.find(x=>x.id===sel)||BR.find(x=>x.profiles.length);if(f)$('#br').value=f.id;fillPf()}
+function fillPf(){const b=BR.find(x=>x.id===$('#br').value),p=b?b.profiles:[];
+  $('#pf').innerHTML=p.map(x=>`<option value="${esc(x.dir)}">${esc(x.name)}</option>`).join('');$('#pf').style.display=p.length>1?'':'none'}
+$('#br').onchange=fillPf;
+$('#pick').onclick=async()=>{const id=await I('imp:pick');if(id)loadBr(id)};
+$('#favl').onclick=async e=>{const b=e.target.closest('button');if(!b)return;const x=FAV[+b.dataset.i],a=b.dataset.a;
+  if(a==='o')I('fav:open',x.url);
+  if(a==='pin'){await I('fav:pin',x.url,!x.pin);FAV=await I('fav:list');rFav()}
+  if(a==='d'){await I('fav:del',x.url);FAV=await I('fav:list');rFav()}};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-pg]');if(!b)return;const k=b.dataset.pg;st[k].p+=+b.dataset.d;({pw:rPW,fav:rFav,hist:rHist})[k]()});
+$('#pwq').oninput=e=>{st.pw.q=e.target.value;st.pw.p=1;rPW()};
+$('#favq').oninput=e=>{st.fav.q=e.target.value;st.fav.p=1;rFav()};
+$('#favpin').onclick=()=>{st.fav.pin=!st.fav.pin;st.fav.p=1;rFav()};
+$('#na').onclick=async()=>{if(!$('#nu').value.trim())return;await I('fav:add',$('#nt').value,$('#nu').value);$('#nt').value=$('#nu').value='';FAV=await I('fav:list');rFav()};
+(async()=>{
+  await loadBr();
+  const c=await I('cfg:get');$('#ab').checked=c.adblock;$('#scr').checked=c.scroll!==false;$('#sl').checked=c.sleep;$('#fbar').checked=c.favbar!==false;applyTheme(c.theme);$('#dlask').checked=!!c.dlAsk;$('#se').value=c.search||'google';$('#bgn').textContent=c.bg||'kein Bild';$('#bgdim').value=c.bgDim??45;$('#rs').checked=c.restore!==false;
+  FAV=await I('fav:list');PW=await I('pw:list');rFav();rPW();vs();gen();
+})();
+$('#ab').onchange=e=>I('cfg:set',{adblock:e.target.checked});
+$('#scr').onchange=e=>I('cfg:set',{scroll:e.target.checked});
+$('#sl').onchange=e=>I('cfg:set',{sleep:e.target.checked});
+$('#fbar').onchange=e=>I('cfg:set',{favbar:e.target.checked});
+$('#go').onclick=async()=>{
+  const k=[['k1','fav'],['k2','pw'],['k3','tabs']].filter(([i])=>$('#'+i).checked).map(x=>x[1]);
+  if(!$('#pf').value)return;$('#out').textContent='Läuft…';
+  const r=await I('imp:run',$('#br').value,$('#pf').value,k);
+  $('#out').textContent=`${r.fav} Favoriten, ${r.pw} Passwörter, ${r.tabs} Tabs importiert`+(r.err.length?'\n'+r.err.join('\n'):'');
+  FAV=await I('fav:list');PW=await I('pw:list');rFav();rPW()};
+
+// ---- Tresor ----
+let VS={master:false,locked:false},vform=false;
+async function vs(){VS=await I('vault:status');rVault()}
+async function pwget(i){try{return await I('pw:get',i)}catch(e){await vs();throw e}}
+function rVault(){let h;
+  if(!VS.master||vform)h=`<div class="row" style="padding:0;border:0"><div><b>${VS.master?'Master-Passwort ändern':'Master-Passwort festlegen'}</b><small>Mind. 8 Zeichen. Vergessen = Passwörter nicht wiederherstellbar.</small></div><input type="password" id="vp1" placeholder="Neues Master-Passwort"><button id="vset">${VS.master?'Ändern':'Festlegen'}</button>${vform?'<button id="vx">Abbrechen</button>':''}</div>`;
+  else if(VS.locked)h=`<div class="row" style="padding:0;border:0"><div><b>🔒 Tresor gesperrt</b><small>Anzeigen, Kopieren und Autofill brauchen das Master-Passwort</small></div><input type="password" id="vp1" placeholder="Master-Passwort"><button id="vun">Entsperren</button></div>`;
+  else h=`<div class="row" style="padding:0;border:0"><div><b>🔓 Tresor entsperrt</b><small>Sperrt sich nach 15 Min. ohne Nutzung automatisch</small></div><div><button id="vlock">Sperren</button> <button id="vchg">Ändern</button> <button id="vrm">Entfernen</button></div></div>`;
+  $('#vault').innerHTML=h}
+$('#vault').onclick=async e=>{const id=e.target.id,p=$('#vp1')?$('#vp1').value:'';
+  if(id==='vset'){if(p.length<8)return alert('Mindestens 8 Zeichen');await I('vault:set',p);vform=false;await vs()}
+  if(id==='vun'){if(!await I('vault:unlock',p))return alert('Falsches Master-Passwort');await vs()}
+  if(id==='vlock'){await I('vault:lock');await vs()}
+  if(id==='vchg'){vform=true;rVault()}if(id==='vx'){vform=false;rVault()}
+  if(id==='vrm'&&confirm('Master-Passwort entfernen? Passwörter sind dann nur noch per Windows-Konto geschützt.')){await I('vault:remove');await vs()}};
+$('#vault').onkeydown=e=>{if(e.key==='Enter'){const b=$('#vset')||$('#vun');b&&b.click()}};
+// ---- Generator ----
+function gen(){const n=+$('#gl').value;let set='abcdefghijkmnopqrstuvwxyz';
+  if($('#gu').checked)set+='ABCDEFGHJKLMNPQRSTUVWXYZ';if($('#gn').checked)set+='23456789';if($('#gs').checked)set+='!@#$%^&*-_=+?';
+  $('#gout').value=[...crypto.getRandomValues(new Uint32Array(n))].map(x=>set[x%set.length]).join('');$('#glv').textContent=n}
+$('#ggen').onclick=gen;$('#gl').oninput=gen;['gu','gn','gs'].forEach(i=>$('#'+i).onchange=gen);$('#gcp').onclick=()=>copy($('#gout').value,true);
+// ---- Themes ----
+const PRE=[['nx Neon','#ff3ea5','#2de1e6'],['Blutmond','#ff2d2d','#ff9f1c'],['Matrix','#00ff7f','#00d4ff'],['Eis','#4da3ff','#b8f2ff'],['Violett','#b36bff','#ff3ea5'],['Gold','#ffcc33','#ff5e5e'],['Sakura','#ff7eb6','#ffd1e8'],['Ozean','#00c2ff','#3d5afe'],['Sunset','#ff5e62','#ffc371'],['Mono','#ffffff','#9aa0b4']];
+$('#presets').innerHTML=PRE.map(([n,p,c],i)=>`<button class="pre" data-i="${i}" title="${n}" style="background:linear-gradient(135deg,${p},${c})"></button>`).join('');
+function applyTheme(t){if(!t)return;const r=document.documentElement.style;r.setProperty('--p',t.p);r.setProperty('--c',t.c);$('#cp').value=t.p;$('#cc').value=t.c}
+function setTheme(p,c){applyTheme({p,c});I('cfg:set',{theme:{p,c}})}
+$('#presets').onclick=e=>{const b=e.target.closest('.pre');if(b)setTheme(PRE[b.dataset.i][1],PRE[b.dataset.i][2])};
+$('#cp').onchange=$('#cc').onchange=()=>setTheme($('#cp').value,$('#cc').value);
+// ---- Verlauf ----
+let HIST=[];
+async function loadHist(){HIST=await I('hist:list');rHist()}
+function rHist(){const f=st.hist.q.toLowerCase();
+  const l=HIST.filter(x=>(x.title+' '+x.url).toLowerCase().includes(f));
+  $('#histn').textContent=l.length+' von '+HIST.length+' Einträgen';
+  $('#histl').innerHTML=slice('hist',l).map(x=>`<div class="it">${ico(x.url)}<div class="mt"><b>${esc(x.title||x.url)}</b><small>${esc(x.url)}</small></div><span class="tag">${new Date(x.ts).toLocaleString('de-DE',{dateStyle:'short',timeStyle:'short'})}</span><button data-a="o" data-u="${esc(x.url)}">Öffnen</button><button class="x" data-a="d" data-t="${x.ts}">✕</button></div>`).join('')||'<p class="empty">Keine Treffer</p>'}
+$('#histq').oninput=e=>{st.hist.q=e.target.value;st.hist.p=1;rHist()};
+$('#histl').onclick=async e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.a==='o')I('fav:open',b.dataset.u);if(b.dataset.a==='d'){await I('hist:del',+b.dataset.t);loadHist()}};
+$('#histclr').onclick=async()=>{if(confirm('Gesamten Verlauf löschen?')){await I('hist:clear');loadHist()}};
+// ---- Downloads ----
+const mb=b=>b>1e9?(b/1e9).toFixed(2)+' GB':(b/1e6).toFixed(1)+' MB';
+async function rDl(){const l=await I('dl:list');
+  $('#dll').innerHTML=l.map(d=>{const run=d.state==='läuft'||d.state==='pausiert',pc=d.total>0?Math.round(d.got/d.total*100):0;
+    return `<div class="it"><div class="mt"><b>${esc(d.name)}</b><small>${esc(d.state)} · ${mb(d.got)}${d.total>0?' / '+mb(d.total):''}</small>${run?`<div class="pb"><i style="width:${pc}%"></i></div>`:''}</div>${d.state==='fertig'?`<button data-a="open" data-i="${d.id}">Öffnen</button>`:''}${d.state!=='abgebrochen'?`<button data-a="show" data-i="${d.id}">Ordner</button>`:''}${run?`<button class="x" data-a="cancel" data-i="${d.id}">Abbrechen</button>`:''}</div>`}).join('')||'<p class="empty">Noch keine Downloads</p>'}
+$('#dll').onclick=async e=>{const b=e.target.closest('button');if(b){await I('dl:'+b.dataset.a,+b.dataset.i);rDl()}};
+$('#dlclr').onclick=async()=>{await I('dl:clear');rDl()};
+setInterval(()=>{if($('#s-dl').classList.contains('on'))rDl()},1000);
+function onSec(id){if(id==='s-ext')rExt();if(id==='s-hist')loadHist();if(id==='s-dl')rDl();if(id==='s-pw')vs()}
+function goto(h){const b=document.querySelector(`nav button[data-s="s-${h}"]`);if(b)b.click()}
+goto(location.hash.slice(1));addEventListener('hashchange',()=>goto(location.hash.slice(1)));
+$('#rs').onchange=e=>I('cfg:set',{restore:e.target.checked});
+I('app:info').then(i=>{$('#ver').textContent='v'+i.version});
+$('#upb').onclick=async()=>{$('#upm').textContent='Prüfe…';$('#upm').textContent=await I('app:update')};
+I('dl:dir').then(p=>{$('#dldir').textContent=p});
+$('#dlpick').onclick=async()=>{$('#dldir').textContent=await I('dl:pickdir')};
+$('#dlreset').onclick=async()=>{$('#dldir').textContent=await I('dl:resetdir')};
+$('#dlask').onchange=e=>I('cfg:set',{dlAsk:e.target.checked});
+$('#se').onchange=e=>I('cfg:set',{search:e.target.value});
+new MutationObserver(()=>fillIc().catch(()=>{})).observe($('main'),{childList:true,subtree:true});
+$('#bgpick').onclick=async()=>{$('#bgn').textContent=(await I('bg:pick'))||'kein Bild';bgLoad()};
+$('#bgclr').onclick=async()=>{await I('bg:clear');$('#bgn').textContent='kein Bild';bgLoad()};
+$('#bgdim').onchange=e=>I('cfg:set',{bgDim:+e.target.value});
+let BG={url:'',x:50,y:50,fit:'cover',zoom:100,dim:45};
+function bgUpd(){const has=!!BG.url;$('#bgbox').style.display=has?'block':'none';if(!has)return;
+  if($('#bgimg').getAttribute('src')!==BG.url)$('#bgimg').src=BG.url;
+  $('#bgdot').style.left=BG.x+'%';$('#bgdot').style.top=BG.y+'%';
+  const d=BG.dim/100,i=$('#bgin').style;
+  i.background=`linear-gradient(rgba(10,10,18,${d}),rgba(10,10,18,${d})),url("${BG.url}") ${BG.x}% ${BG.y}%/${BG.fit} no-repeat`;
+  i.transform=`scale(${BG.zoom/100})`;i.transformOrigin=BG.x+'% '+BG.y+'%';$('#bgfit').value=BG.fit;$('#bgzoom').value=BG.zoom}
+async function bgLoad(){const c=await I('cfg:get');BG={url:await I('bg:url'),x:c.bgX??50,y:c.bgY??50,fit:c.bgFit||'cover',zoom:c.bgZoom||100,dim:c.bgDim??45};bgUpd()}
+$('#bgsel').onclick=e=>{const r=$('#bgimg').getBoundingClientRect(),cl=v=>Math.min(100,Math.max(0,Math.round(v)));
+  BG.x=cl((e.clientX-r.left)/r.width*100);BG.y=cl((e.clientY-r.top)/r.height*100);bgUpd();I('cfg:set',{bgX:BG.x,bgY:BG.y})};
+$('#bgfit').onchange=e=>{BG.fit=e.target.value;bgUpd();I('cfg:set',{bgFit:BG.fit})};
+$('#bgzoom').oninput=e=>{BG.zoom=+e.target.value;bgUpd()};
+$('#bgzoom').onchange=e=>I('cfg:set',{bgZoom:+e.target.value});
+$('#bgdim').oninput=e=>{BG.dim=+e.target.value;bgUpd()};
+bgLoad();
+async function rExt(){const l=await I('ext:list');
+  $('#exl').innerHTML=l.map(x=>`<div class="it"><div class="ico"><span>${esc((x.name[0]||'?').toUpperCase())}</span></div><div class="mt"><b>${esc(x.name)} <span class="tag">v${esc(x.version)}${x.unpacked?' · lokal':''}</span></b><small>${esc(x.desc)}</small></div>${x.opts?`<button data-a="o" data-i="${esc(x.id)}">Optionen</button>`:''}<button class="x" data-a="d" data-i="${esc(x.id)}">Entfernen</button></div>`).join('')||'<p class="empty">Noch keine Erweiterungen installiert</p>'}
+$('#exl').onclick=async e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.a==='o')I('ext:options',b.dataset.i);
+  if(b.dataset.a==='d'&&confirm('Erweiterung entfernen?')){await I('ext:remove',b.dataset.i);rExt()}};
+$('#exstore').onclick=()=>I('ext:store');
+$('#exdir').onclick=async()=>{const r=await I('ext:loaddir');if(r)$('#exmsg').textContent=r.startsWith('Fehler')?r:r+' geladen';rExt()};
+$('#exupd').onclick=async()=>{$('#exmsg').textContent='Prüfe…';$('#exmsg').textContent=await I('ext:update');rExt()};
+</script></body></html>
