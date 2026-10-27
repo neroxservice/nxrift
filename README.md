@@ -155,7 +155,9 @@ Die Marken-Symbole in der Seitenleiste (Discord, Twitch, YouTube, Spotify, GitHu
 
 ## 📄 Lizenz
 
-*Noch festzulegen* – bevor du das Repo öffentlich machst, füge eine `LICENSE`-Datei hinzu und trage sie hier ein.
+Der Quellcode von nxRift steht unter der [MIT-Lizenz](LICENSE).
+
+Nicht Teil der Lizenz sind der Name **nxRift**, das **nx-Logo** und die übrigen Marken-Grafiken von nxService & Streams. Sie dürfen nicht ohne Erlaubnis für veränderte Versionen oder eigene Produkte verwendet werden. Die eingesetzten Bibliotheken (u. a. Electron, Ghostery Adblocker, electron-chrome-extensions, sql.js) behalten ihre eigenen Lizenzen.
 
 ---
 
